@@ -28,7 +28,7 @@ for i in range(0,len(symbols)):
        u=float(re.findall(innerPrice,prices[i])[0])
        l=float(re.findall(innerPrice,oraclePrices[i])[0])
        premium=((abs(u-l))/l)*100
-       print(symbols[i],"|","Price : ",u,"|","Oracle Price : ",l,"|","Premium : ",str(premium)[:5],"%")
+       print(symbols[i],"|","Price : ",str(u)[:5],"|","Oracle Price : ",str(l)[:5],"|","Premium : ",str(premium)[:5],"%")
 
 
        
