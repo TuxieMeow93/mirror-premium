@@ -26,7 +26,7 @@ for i in range(0,len(symbols)):
        premium=((abs(u-l))/l)*100
        print(symbols[i],"\n","Price : ",str(u)[:5],"|","Oracle Price : ",str(l)[:5],"|","Premium : ",str(premium)[:5],"%")
        print("-----------------------------------------------------------")
-
+print('Donate MIR here <3','terra1tywrvyyl4ay68t89szl9gtlf3anawt6pnsxgsg')
 
        
 
