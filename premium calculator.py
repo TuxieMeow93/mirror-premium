@@ -3,15 +3,15 @@ import requests
 import json
 import re
 query = """{
-  query: 
+  query:
    assets { symbol prices{
     price
     oraclePrice
-  	}
+        }
   }
 }"""
 now = datetime.now()
- 
+
 print("As of", now)
 print("-----------------------------------------------------------")
 
@@ -33,12 +33,13 @@ for i in range(0,len(symbols)):
        l=float(re.findall(innerPrice,oraclePrices[i])[0])
        premium=((abs(u-l))/l)*100
        #f.write(str(texty))
-       print(str(premium)[:5],"%", symbols[i],"|Terraswap: $",str(u)[:5],"|","Oracle Price: $",str(l)[:5])
+       print(str(premium)[:5],"%", symbols[i],"|Terraswap: $",str(u)[:7],"|","Or                                                                                                                                                             acle Price: $",str(l)[:7], "| As of: ",now)
        #print("-----------------------------------------------------------")
 #f.close()
 print("-----------------------------------------------------------")
-print('\n\nDonate MIR here','terra1pcjv96xndll4eaymw6d68kdg9ycft2ez0xk403')
-print('And here terra1tywrvyyl4ay68t89szl9gtlf3anawt6pnsxgsg')
-print('Potential features to add: storing premium history,Premium+Mint+Stake calculator, IL, APR projections')
-print('credit: https://github.com/dev-bhaskar8/mirror-premium')
-print("-----------------------------------------------------------")
+print("")
+#print('\n\nDonate MIR here','terra1pcjv96xndll4eaymw6d68kdg9ycft2ez0xk403')
+#print('And here terra1tywrvyyl4ay68t89szl9gtlf3anawt6pnsxgsg')
+#print('Potential features to add: storing premium history,Premium+Mint+Stake ca                                                                                                                                                             lculator, IL, APR projections')
+#print('credit: https://github.com/dev-bhaskar8/mirror-premium')
+#print("-----------------------------------------------------------")
