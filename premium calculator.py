@@ -1,3 +1,4 @@
+from datetime import datetime
 import requests
 import json
 import re
@@ -9,7 +10,10 @@ query = """{
   	}
   }
 }"""
-
+now = datetime.now()
+ 
+print("As of", now)
+print("-----------------------------------------------------------")
 
 #f = open("log.txt", "w")
 
@@ -32,7 +36,9 @@ for i in range(0,len(symbols)):
        print(str(premium)[:5],"%", symbols[i],"|Terraswap: $",str(u)[:5],"|","Oracle Price: $",str(l)[:5])
        #print("-----------------------------------------------------------")
 #f.close()
+print("-----------------------------------------------------------")
 print('\n\nDonate MIR here','terra1pcjv96xndll4eaymw6d68kdg9ycft2ez0xk403')
 print('And here terra1tywrvyyl4ay68t89szl9gtlf3anawt6pnsxgsg')
 print('Potential features to add: storing premium history,Premium+Mint+Stake calculator, IL, APR projections')
 print('credit: https://github.com/dev-bhaskar8/mirror-premium')
+print("-----------------------------------------------------------")
