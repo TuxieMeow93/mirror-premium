@@ -63,11 +63,9 @@ cat mBABAmirrorpremiums_$today.txt | tee -a sortedmirrorpremiums_$today.txt
 cat mBABAmirrorpremiums_$today.txt |awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' | tee -a sortedmirrorpremiums_$today.txt
 newline
 
-
 cat mGOOGmirrorpremiums_$today.txt | tee -a sortedmirrorpremiums_$today.txt
 cat mGOOGmirrorpremiums_$today.txt |awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' | tee -a sortedmirrorpremiums_$today.txt
 newline
-
 
 cat mIAUmirrorpremiums_$today.txt | tee -a sortedmirrorpremiums_$today.txt
 cat mIAUmirrorpremiums_$today.txt |awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' | tee -a sortedmirrorpremiums_$today.txt
@@ -77,36 +75,29 @@ cat mMSFTmirrorpremiums_$today.txt | tee -a sortedmirrorpremiums_$today.txt
 cat mMSFTmirrorpremiums_$today.txt |awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' | tee -a sortedmirrorpremiums_$today.txt
 newline
 
-
 cat mNFLXmirrorpremiums_$today.txt | tee -a sortedmirrorpremiums_$today.txt
 cat mNFLXmirrorpremiums_$today.txt |awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' | tee -a sortedmirrorpremiums_$today.txt
 newline
-
 
 cat mQQQmirrorpremiums_$today.txt | tee -a sortedmirrorpremiums_$today.txt
 cat mQQQmirrorpremiums_$today.txt |awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' | tee -a sortedmirrorpremiums_$today.txt
 newline
 
-
 cat mSLVmirrorpremiums_$today.txt | tee -a sortedmirrorpremiums_$today.txt
 cat mSLVmirrorpremiums_$today.txt |awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' | tee -a sortedmirrorpremiums_$today.txt
 newline
-
 
 cat mTSLAmirrorpremiums_$today.txt | tee -a sortedmirrorpremiums_$today.txt
 cat mTSLAmirrorpremiums_$today.txt |awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' | tee -a sortedmirrorpremiums_$today.txt
 newline
 
-
 cat mTWTRmirrorpremiums_$today.txt | tee -a sortedmirrorpremiums_$today.txt
 cat mTWTRmirrorpremiums_$today.txt |awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' | tee -a sortedmirrorpremiums_$today.txt
 newline
 
-
 cat mUSOmirrorpremiums_$today.txt | tee -a sortedmirrorpremiums_$today.txt
 cat mUSOmirrorpremiums_$today.txt |awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' | tee -a sortedmirrorpremiums_$today.txt
 newline
-
 
 cat mVIXYmirrorpremiums_$today.txt | tee -a sortedmirrorpremiums_$today.txt
 cat mVIXYmirrorpremiums_$today.txt |awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' | tee -a sortedmirrorpremiums_$today.txt
