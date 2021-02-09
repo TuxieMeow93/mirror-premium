@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#Live version: http://mirrorpremiums.com/
 newline()
 {
 echo "----------" | tee -a /var/www/html/sortedmirrorpremiums_$today.txt
