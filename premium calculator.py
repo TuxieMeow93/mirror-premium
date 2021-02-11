@@ -1,7 +1,8 @@
-from datetime import datetime
 import requests
 import json
-import re
+import pandas as pd
+import time
+
 query = """{
   query:
    assets { symbol prices{
@@ -10,36 +11,55 @@ query = """{
         }
   }
 }"""
-now = datetime.now()
 
-print("As of", now)
-print("-----------------------------------------------------------")
+now = (time.strftime('%Y-%m-%d %H:%M'))
 
-#f = open("log.txt", "w")
+print (now)
+print("----------------------------------------------------------")
 
+#Request and Load the Data from API as a dictionary
 url = 'https://graph.mirror.finance/graphql'
 r = requests.post(url,json={'query': query})
-symbol = 'm[A-Z]{3,4}|MIR'
-price = 'price":"\d+.\d+'
-oraclePrice = 'Price":"\d+.\d'
-innerPrice = '\d+.\d+'
-symbols = re.findall(symbol, r.text)
-ix=symbols.index('MIR')
-prices = re.findall(price, r.text)
-oraclePrices = re.findall(oraclePrice, r.text)
-oraclePrices.insert(ix, f'''Price":"{prices[ix]}''')
-for i in range(0,len(symbols)):
-       u=float(re.findall(innerPrice,prices[i])[0])
-       l=float(re.findall(innerPrice,oraclePrices[i])[0])
-       premium=((abs(u-l))/l)*100
-       #f.write(str(texty))
-       print(str(premium)[:5],"%", symbols[i],"|Terraswap: $",str(u)[:7],"|","Or                                                                                                                                                             acle Price: $",str(l)[:7], "| As of: ",now)
-       #print("-----------------------------------------------------------")
-#f.close()
-print("-----------------------------------------------------------")
+data1 = json.loads(r.text)
+
+#Convert to Pandas DataFrame and remove JSON Nesting
+df = pd.DataFrame(data1)
+df = pd.json_normalize(data1["data"]["query"])
+
+#Rename Colums
+df.rename(columns = {'symbol':'Symbol', 'prices.price':'Price', 'prices.oraclePrice':'Oracle Price'}, inplace = True)
+
+#Format Data Types
+df['Oracle Price'] = pd.to_numeric(df['Oracle Price'], errors = 'coerce')
+df['Price'] = pd.to_numeric(df['Price'], errors = 'coerce')
+
+#Additional Columns & Calculations
+Premium = df['Price'] - df['Oracle Price']
+df['Premium'] = Premium / df['Oracle Price']
+df['Date Time'] = now
+
+#Fill None Values with 0
+df.fillna(0, inplace = True)
+
+#Sort Columns
+df.sort_values("Premium", inplace = True)
+
+#Reorder Columns
+first_cols = ['Premium']
+last_cols = [col for col in df.columns if col not in first_cols]
+df = df[first_cols+last_cols]
+
+#Format Columns to Pretty
+df['Price'] = df['Price'].map("${:,.2f}".format)
+df['Oracle Price'] = df['Oracle Price'].map("${:,.2f}".format)
+df['Premium'] = df['Premium'].map("{:.2%}".format)
+
+#See Ya!
+df.to_csv("list1.csv")
+df_pretty = df.to_string(index = False)
+
+
+print(df_pretty)
+
+print("----------------------------------------------------------")
 print("")
-#print('\n\nDonate MIR here','terra1pcjv96xndll4eaymw6d68kdg9ycft2ez0xk403')
-#print('And here terra1tywrvyyl4ay68t89szl9gtlf3anawt6pnsxgsg')
-#print('Potential features to add: storing premium history,Premium+Mint+Stake ca                                                                                                                                                             lculator, IL, APR projections')
-#print('credit: https://github.com/dev-bhaskar8/mirror-premium')
-#print("-----------------------------------------------------------")
