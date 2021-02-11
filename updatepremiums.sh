@@ -1,5 +1,5 @@
 #!/bin/bash
-#Live version: http://mirrorpremiums.com/
+
 newline()
 {
 echo "----------" | tee -a /var/www/html/sortedmirrorpremiums_$today.txt
@@ -36,10 +36,10 @@ grep -ie "mAAPL" /var/www/html/mirrorpremiums_$today.txt | tee /var/www/html/mAA
 #new mAssets
 #mABNB mBTC mFB mETH mGS
 grep -ie "mABNB" /var/www/html/mirrorpremiums_$today.txt | tee /var/www/html/mABNBmirrorpremiums_$today.txt
-grep -ie "mBTC" /var/www/html/mirrorpremiums_$today.txt | tee /var/www/html/mAAPLmirrorpremiums_$today.txt
-grep -ie "mFB" /var/www/html/mirrorpremiums_$today.txt | tee /var/www/html/mAAPLmirrorpremiums_$today.txt
-grep -ie "mETH" /var/www/html/mirrorpremiums_$today.txt | tee /var/www/html/mAAPLmirrorpremiums_$today.txt
-grep -ie "mGS" /var/www/html/mirrorpremiums_$today.txt | tee /var/www/html/mAAPLmirrorpremiums_$today.txt
+grep -ie "mBTC" /var/www/html/mirrorpremiums_$today.txt | tee /var/www/html/mBTCmirrorpremiums_$today.txt
+grep -ie "mFB" /var/www/html/mirrorpremiums_$today.txt | tee /var/www/html/mFBmirrorpremiums_$today.txt
+grep -ie "mETH" /var/www/html/mirrorpremiums_$today.txt | tee /var/www/html/mETHmirrorpremiums_$today.txt
+grep -ie "mGS" /var/www/html/mirrorpremiums_$today.txt | tee /var/www/html/mGSmirrorpremiums_$today.txt
 
 rm -rf sortedmirrorpremiums_$today.txt
 touch sortedmirrorpremiums_$today.txt
@@ -63,9 +63,11 @@ cat mBABAmirrorpremiums_$today.txt | tee -a sortedmirrorpremiums_$today.txt
 cat mBABAmirrorpremiums_$today.txt |awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' | tee -a sortedmirrorpremiums_$today.txt
 newline
 
+
 cat mGOOGmirrorpremiums_$today.txt | tee -a sortedmirrorpremiums_$today.txt
 cat mGOOGmirrorpremiums_$today.txt |awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' | tee -a sortedmirrorpremiums_$today.txt
 newline
+
 
 cat mIAUmirrorpremiums_$today.txt | tee -a sortedmirrorpremiums_$today.txt
 cat mIAUmirrorpremiums_$today.txt |awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' | tee -a sortedmirrorpremiums_$today.txt
@@ -75,29 +77,36 @@ cat mMSFTmirrorpremiums_$today.txt | tee -a sortedmirrorpremiums_$today.txt
 cat mMSFTmirrorpremiums_$today.txt |awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' | tee -a sortedmirrorpremiums_$today.txt
 newline
 
+
 cat mNFLXmirrorpremiums_$today.txt | tee -a sortedmirrorpremiums_$today.txt
 cat mNFLXmirrorpremiums_$today.txt |awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' | tee -a sortedmirrorpremiums_$today.txt
 newline
+
 
 cat mQQQmirrorpremiums_$today.txt | tee -a sortedmirrorpremiums_$today.txt
 cat mQQQmirrorpremiums_$today.txt |awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' | tee -a sortedmirrorpremiums_$today.txt
 newline
 
+
 cat mSLVmirrorpremiums_$today.txt | tee -a sortedmirrorpremiums_$today.txt
 cat mSLVmirrorpremiums_$today.txt |awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' | tee -a sortedmirrorpremiums_$today.txt
 newline
+
 
 cat mTSLAmirrorpremiums_$today.txt | tee -a sortedmirrorpremiums_$today.txt
 cat mTSLAmirrorpremiums_$today.txt |awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' | tee -a sortedmirrorpremiums_$today.txt
 newline
 
+
 cat mTWTRmirrorpremiums_$today.txt | tee -a sortedmirrorpremiums_$today.txt
 cat mTWTRmirrorpremiums_$today.txt |awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' | tee -a sortedmirrorpremiums_$today.txt
 newline
 
+
 cat mUSOmirrorpremiums_$today.txt | tee -a sortedmirrorpremiums_$today.txt
 cat mUSOmirrorpremiums_$today.txt |awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' | tee -a sortedmirrorpremiums_$today.txt
 newline
+
 
 cat mVIXYmirrorpremiums_$today.txt | tee -a sortedmirrorpremiums_$today.txt
 cat mVIXYmirrorpremiums_$today.txt |awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' | tee -a sortedmirrorpremiums_$today.txt
