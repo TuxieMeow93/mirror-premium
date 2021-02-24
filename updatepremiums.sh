@@ -9,7 +9,7 @@ echo "----------" | tee -a /var/www/html/sortedmirrorpremiums_$today.txt
 cd /root
 
 dt=$(date +%Y-%m-%d_%H_%M)
-today=$(date +%Y-%m-%d)
+today=$(date +%Y-%m-%d--%a)
 mkdir -p /var/www/html/mirrorpremiums/$today
 cp totallog.txt /root/bak/$dt.txt
 python3 /root/premiumcalculator.py | tee /root/log.txt
@@ -32,6 +32,10 @@ grep -ie "mGOOG" /var/www/html/mirrorpremiums_$today.txt | tee /var/www/html/mGO
 grep -ie "mMSFT" /var/www/html/mirrorpremiums_$today.txt | tee /var/www/html/mMSFTmirrorpremiums_$today.txt
 grep -ie "mBABA" /var/www/html/mirrorpremiums_$today.txt | tee /var/www/html/mBABAmirrorpremiums_$today.txt
 grep -ie "mAAPL" /var/www/html/mirrorpremiums_$today.txt | tee /var/www/html/mAAPLmirrorpremiums_$today.txt
+grep -ie "mGME" /var/www/html/mirrorpremiums_$today.txt | tee /var/www/html/mGMEmirrorpremiums_$today.txt
+grep -ie "mAMC" /var/www/html/mirrorpremiums_$today.txt | tee /var/www/html/mAMCmirrorpremiums_$today.txt
+
+
 
 #new mAssets
 #mABNB mBTC mFB mETH mGS
@@ -132,4 +136,12 @@ newline
 
 cat mGSmirrorpremiums_$today.txt | tee -a sortedmirrorpremiums_$today.txt
 cat mGSmirrorpremiums_$today.txt |awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' | tee -a sortedmirrorpremiums_$today.txt
+newline
+
+cat mGMEmirrorpremiums_$today.txt | tee -a sortedmirrorpremiums_$today.txt
+cat mGMEmirrorpremiums_$today.txt |awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' | tee -a sortedmirrorpremiums_$today.txt
+newline
+
+cat mAMCmirrorpremiums_$today.txt | tee -a sortedmirrorpremiums_$today.txt
+cat mAMCmirrorpremiums_$today.txt |awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' | tee -a sortedmirrorpremiums_$today.txt
 newline
