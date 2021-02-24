@@ -1,0 +1,2 @@
+*/10 * * * * /bin/bash /root/updatepremium.sh >/dev/null 2>&1
+8 * * * * /bin/bash /root/backuppremiums.sh >/dev/null 2>&1
