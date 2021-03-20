@@ -45,6 +45,9 @@ grep -ie "mFB" /var/www/html/mirrorpremiums_$today.txt | tee /var/www/html/mFBmi
 grep -ie "mETH" /var/www/html/mirrorpremiums_$today.txt | tee /var/www/html/mETHmirrorpremiums_$today.txt
 grep -ie "mGS" /var/www/html/mirrorpremiums_$today.txt | tee /var/www/html/mGSmirrorpremiums_$today.txt
 
+grep -ie "mSPY" /var/www/html/mirrorpremiums_$today.txt | tee /var/www/html/mSPYmirrorpremiums_$today.txt
+
+
 rm -rf sortedmirrorpremiums_$today.txt
 touch sortedmirrorpremiums_$today.txt
 
@@ -144,4 +147,8 @@ newline
 
 cat mAMCmirrorpremiums_$today.txt | tee -a sortedmirrorpremiums_$today.txt
 cat mAMCmirrorpremiums_$today.txt |awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' | tee -a sortedmirrorpremiums_$today.txt
+newline
+
+cat mSPYmirrorpremiums_$today.txt | tee -a sortedmirrorpremiums_$today.txt
+cat mSPYmirrorpremiums_$today.txt |awk '{ sum += $1; n++ } END { if (n > 0) print sum / n; }' | tee -a sortedmirrorpremiums_$today.txt
 newline
